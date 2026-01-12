@@ -1,0 +1,222 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-primary-color : rgb(12, 12, 12);
+    --text-primary-color : white;
+
+    --space--xs : 4px;
+    --space--sm : 8px;  
+    --space--md : 16px;
+    --space--lg : 24px;
+    --space--xl : 32px;
+    --space--2xl : 40px;
+    --space--3xl : 48px;
+
+    --border-bg-color : rgb(240, 233, 233);
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-primary-color);
+    color: var(--text-primary-color);
+    overflow: hidden; /* Prevent scrolling */
+    touch-action: none; /* Prevent default touch actions */
+}
+main,section{
+    height: 100%;
+    width: 100%;
+}
+
+section{
+    padding: var(--space--2xl);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: var(--space--md);
+}
+.infos{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.info{
+    padding: var(--space--sm) var(--space--md);
+    border: 1px solid var(--border-bg-color);
+    border-radius: var(--space--sm);
+}
+.board{
+    border: 1px solid white;
+    flex-grow: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px,1fr));
+    grid-template-rows: repeat(auto-fill,  minmax(50px,1fr));
+    
+}
+.block{
+    border-radius: 50%;
+    /* border: 1px solid rgb(104, 104, 104); */
+}
+
+.fill{
+    background-color: rgb(30, 156, 34);
+}
+.food{
+    background-color: rgb(156, 30, 30);
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color:#35353587;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.btn{
+    padding: var(--space--sm) var(--space--xl);
+    border: none; 
+    background-color: rgb(30, 156, 34);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    border-radius: var(--space--sm);
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+.modal .start-game,
+.modal .gameOver{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: var(--space--md);
+}
+
+.modal .gameOver{
+    display: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ============================================ */
+
+/* Tablets & Small Laptops - 1024px and below */
+@media (max-width: 1024px) {
+    section{
+        padding: var(--space--xl);
+    }
+    
+    .board{
+        grid-template-columns: repeat(auto-fill, minmax(40px,1fr));
+        grid-template-rows: repeat(auto-fill, minmax(40px,1fr));
+    }
+}
+
+/* Tablets (Portrait) - 768px and below */
+@media (max-width: 768px) {
+    section{
+        padding: var(--space--lg);
+        gap: var(--space--sm);
+    }
+    
+    .infos{
+        flex-direction: column;
+        gap: var(--space--sm);
+        align-items: center;
+    }
+    
+    .info{
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .board{
+        grid-template-columns: repeat(auto-fill, minmax(35px,1fr));
+        grid-template-rows: repeat(auto-fill, minmax(35px,1fr));
+    }
+    
+    .btn{
+        padding: var(--space--md) var(--space--xl);
+        font-size: 18px;
+    }
+}
+
+/* Mobile (Large) - 480px and below */
+@media (max-width: 480px) {
+    section{
+        padding: var(--space--md);
+    }
+    
+    .info{
+        padding: var(--space--sm);
+        font-size: 12px;
+    }
+    
+    .board{
+        grid-template-columns: repeat(auto-fill, minmax(25px,1fr));
+        grid-template-rows: repeat(auto-fill, minmax(25px,1fr));
+    }
+    
+    .btn{
+        padding: var(--space--sm) var(--space--lg);
+        font-size: 16px;
+        width: 80%;
+    }
+    
+    .modal .start-game h1,
+    .modal .gameOver h1{
+        font-size: 1.5rem;
+    }
+    
+    .modal .start-game h2,
+    .modal .gameOver h2{
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Small Mobile - 360px and below */
+@media (max-width: 360px) {
+    section{
+        padding: var(--space--sm);
+    }
+    
+    .info{
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+    
+    .board{
+        grid-template-columns: repeat(auto-fill, minmax(20px,1fr));
+        grid-template-rows: repeat(auto-fill, minmax(20px,1fr));
+    }
+    
+    .btn{
+        padding: var(--space--sm) var(--space--md);
+        font-size: 14px;
+        width: 90%;
+    }
+    
+    .modal .start-game h1,
+    .modal .gameOver h1{
+        font-size: 1.2rem;
+    }
+    
+    .modal .start-game h2,
+    .modal .gameOver h2{
+        font-size: 1rem;
+    }
+}
